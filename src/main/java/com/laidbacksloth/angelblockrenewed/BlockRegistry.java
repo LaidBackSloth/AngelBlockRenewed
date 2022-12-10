@@ -1,6 +1,5 @@
 package com.laidbacksloth.angelblockrenewed;
 
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -18,7 +17,7 @@ public class BlockRegistry {
             () -> new AngelBlockBlock(BlockBehaviour.Properties.of(Material.WOOD).instabreak().explosionResistance(0).noOcclusion()));
 
     public static final RegistryObject<Item> ANGEL_BLOCK_ITEM = ITEMS.register("angel_block",
-            () -> new AngelBlockItem(ANGEL_BLOCK_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new AngelBlockItem(ANGEL_BLOCK_BLOCK.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

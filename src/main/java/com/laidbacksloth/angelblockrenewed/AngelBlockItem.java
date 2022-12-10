@@ -9,6 +9,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 
 public class AngelBlockItem extends BlockItem {
     public AngelBlockItem(Block pBlock, Properties pProperties) {
@@ -16,7 +17,7 @@ public class AngelBlockItem extends BlockItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if (!pLevel.isClientSide) {
             double x = pPlayer.getX() + pPlayer.getLookAngle().x * 4.5;
             double y = pPlayer.getEyeY() + pPlayer.getLookAngle().y * 4.5;
