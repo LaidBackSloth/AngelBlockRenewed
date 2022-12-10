@@ -5,16 +5,16 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class BlockRegistry {
-    public static final Block ANGEL_BLOCK_BLOCK = Registry.register(Registry.BLOCK, new Identifier(AngelBlockRenewed.MOD_ID, "angel_block"),
+    public static final Block ANGEL_BLOCK_BLOCK = Registry.register(Registries.BLOCK, new Identifier(AngelBlockRenewed.MOD_ID, "angel_block"),
             new AngelBlockBlock(FabricBlockSettings.of(Material.WOOD).breakInstantly().resistance(0).nonOpaque()));
 
-    public static final Item ANGEL_BLOCK_ITEM = Registry.register(Registry.ITEM, new Identifier(AngelBlockRenewed.MOD_ID, "angel_block"),
-            new AngelBlockItem(ANGEL_BLOCK_BLOCK, new FabricItemSettings().group(ItemGroup.MISC)));
+    public static final Item ANGEL_BLOCK_ITEM = Registry.register(Registries.ITEM, new Identifier(AngelBlockRenewed.MOD_ID, "angel_block"),
+            new AngelBlockItem(ANGEL_BLOCK_BLOCK, new FabricItemSettings()));
 
     public static void register() {
     }
