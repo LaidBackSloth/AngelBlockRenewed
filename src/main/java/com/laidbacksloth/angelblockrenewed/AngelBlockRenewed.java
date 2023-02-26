@@ -17,6 +17,8 @@ public class AngelBlockRenewed {
     }
 
     public void creativeModTabs(CreativeModeTabEvent.BuildContents event) {
-        event.registerSimple(CreativeModeTabs.TOOLS_AND_UTILITIES, BlockRegistry.ANGEL_BLOCK_ITEM.get());
+        if (event.getTab() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(BlockRegistry.ANGEL_BLOCK_ITEM.get());
+        }
     }
 }
