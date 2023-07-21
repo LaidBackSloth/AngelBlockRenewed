@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class BlockRegistry {
     public static final Block ANGEL_BLOCK_BLOCK = Registry.register(Registries.BLOCK, new Identifier(AngelBlockRenewed.MOD_ID, "angel_block"),
-            new AngelBlockBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).burnable().breakInstantly().resistance(0).nonOpaque()));
+            new AngelBlockBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).breakInstantly().resistance(0).nonOpaque()));
 
     public static final Item ANGEL_BLOCK_ITEM = Registry.register(Registries.ITEM, new Identifier(AngelBlockRenewed.MOD_ID, "angel_block"),
             new AngelBlockItem(ANGEL_BLOCK_BLOCK, new FabricItemSettings()));
