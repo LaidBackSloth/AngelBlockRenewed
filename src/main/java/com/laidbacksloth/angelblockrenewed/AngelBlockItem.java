@@ -20,7 +20,7 @@ public class AngelBlockItem extends BlockItem {
             double x = user.getX() + user.getRotationVec(1).x * 4.5;
             double y = user.getEyeY() + user.getRotationVec(1).y * 4.5;
             double z = user.getZ() + user.getRotationVec(1).z * 4.5;
-            BlockPos pos = new BlockPos((int) x, (int) y, (int) z);
+            BlockPos pos = new BlockPos((int) Math.floor(x), (int) Math.floor(y), (int) Math.floor(z));
 
             if (world.getBlockState(pos).getMaterial().isReplaceable()) {
                 world.setBlockState(pos,  BlockRegistry.ANGEL_BLOCK_BLOCK.getDefaultState(), 3);
