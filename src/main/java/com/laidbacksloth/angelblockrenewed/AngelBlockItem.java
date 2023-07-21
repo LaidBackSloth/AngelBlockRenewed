@@ -22,7 +22,7 @@ public class AngelBlockItem extends BlockItem {
             double x = pPlayer.getX() + pPlayer.getLookAngle().x * 4.5;
             double y = pPlayer.getEyeY() + pPlayer.getLookAngle().y * 4.5;
             double z = pPlayer.getZ() + pPlayer.getLookAngle().z * 4.5;
-            BlockPos pos = new BlockPos((int) x, (int) y, (int) z);
+            BlockPos pos = new BlockPos((int) Math.floor(x), (int) Math.floor(y), (int) Math.floor(z));
 
             if (pLevel.getBlockState(pos).getMaterial().isReplaceable()) {
                 pLevel.setBlock(pos, BlockRegistry.ANGEL_BLOCK_BLOCK.get().defaultBlockState(), 3);
