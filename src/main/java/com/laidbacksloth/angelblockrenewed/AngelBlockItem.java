@@ -22,7 +22,7 @@ public class AngelBlockItem extends BlockItem {
             double z = user.getZ() + user.getRotationVec(1).z * 4.5;
             BlockPos pos = new BlockPos((int) x, (int) y, (int) z);
 
-            if (world.getBlockState(pos).getMaterial().isReplaceable()) {
+            if (world.getBlockState(pos).isReplaceable()) {
                 world.setBlockState(pos,  BlockRegistry.ANGEL_BLOCK_BLOCK.getDefaultState(), 3);
                 if (!user.isCreative()) {
                     if (hand == Hand.MAIN_HAND) {
