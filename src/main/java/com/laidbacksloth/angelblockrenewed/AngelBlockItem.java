@@ -22,13 +22,19 @@ public class AngelBlockItem extends BlockItem {
             double z = user.getZ() + user.getRotationVec(1).z * 4.5;
             BlockPos pos = new BlockPos((int) Math.floor(x), (int) Math.floor(y), (int) Math.floor(z));
 
-            if (world.getBlockState(pos).getMaterial().isReplaceable()) {
-                world.setBlockState(pos,  BlockRegistry.ANGEL_BLOCK_BLOCK.getDefaultState(), 3);
-                if (!user.isCreative()) {
-                    if (hand == Hand.MAIN_HAND) {
-                        user.getInventory().removeStack(user.getInventory().selectedSlot, 1);
-                    } else {
-                        user.getOffHandStack().decrement(1);
+            //Make sure the player places the angel block below build limit
+            int maxBuildHeight = world.getTopY();
+            int minBuildHeight = world.getBottomY();
+            if (y <= maxBuildHeight && y >= minBuildHeight) {
+
+                if (world.getBlockState(pos).getMaterial().isReplaceable()) {
+                    world.setBlockState(pos,  BlockRegistry.ANGEL_BLOCK_BLOCK.getDefaultState(), 3);
+                    if (!user.isCreative()) {
+                        if (hand == Hand.MAIN_HAND) {
+                            user.getInventory().removeStack(user.getInventory().selectedSlot, 1);
+                        } else {
+                            user.getOffHandStack().decrement(1);
+                        }
                     }
                 }
             }
