@@ -9,6 +9,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 
 public class AngelBlockItem extends BlockItem {
     public AngelBlockItem(Block pBlock, Properties pProperties) {
@@ -16,20 +17,26 @@ public class AngelBlockItem extends BlockItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
         if (!pLevel.isClientSide) {
             double x = pPlayer.getX() + pPlayer.getLookAngle().x * 4.5;
             double y = pPlayer.getEyeY() + pPlayer.getLookAngle().y * 4.5;
             double z = pPlayer.getZ() + pPlayer.getLookAngle().z * 4.5;
             BlockPos pos = new BlockPos(x, y, z);
 
-            if (pLevel.getBlockState(pos).getMaterial().isReplaceable()) {
-                pLevel.setBlock(pos, BlockRegistry.ANGEL_BLOCK_BLOCK.get().defaultBlockState(), 3);
-                if (!pPlayer.isCreative()) {
-                    if (pUsedHand == InteractionHand.MAIN_HAND) {
-                        pPlayer.getInventory().removeFromSelected(false);
-                    } else {
-                        pPlayer.getInventory().removeItem(Inventory.SLOT_OFFHAND, 1);
+            //Make sure the player places the angel block below build limit
+            int maxBuildHeight = pLevel.getMaxBuildHeight();
+            int minBuildHeight = pLevel.getMinBuildHeight();
+            if (y <= maxBuildHeight && y >= minBuildHeight) {
+
+                if (pLevel.getBlockState(pos).getMaterial().isReplaceable()) {
+                    pLevel.setBlock(pos, BlockRegistry.ANGEL_BLOCK_BLOCK.get().defaultBlockState(), 3);
+                    if (!pPlayer.isCreative()) {
+                        if (pUsedHand == InteractionHand.MAIN_HAND) {
+                            pPlayer.getInventory().removeFromSelected(false);
+                        } else {
+                            pPlayer.getInventory().removeItem(Inventory.SLOT_OFFHAND, 1);
+                        }
                     }
                 }
             }
