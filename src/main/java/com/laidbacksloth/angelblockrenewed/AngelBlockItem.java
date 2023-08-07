@@ -17,14 +17,14 @@ public class AngelBlockItem extends BlockItem {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
         if (!pLevel.isClientSide) {
             double x = pPlayer.getX() + pPlayer.getLookAngle().x * 4.5;
             double y = pPlayer.getEyeY() + pPlayer.getLookAngle().y * 4.5;
             double z = pPlayer.getZ() + pPlayer.getLookAngle().z * 4.5;
-            BlockPos pos = new BlockPos(x, y, z);
+            BlockPos pos = new BlockPos((int) Math.floor(x), (int) Math.floor(y), (int) Math.floor(z));
 
-            if (pLevel.getBlockState(pos).getMaterial().isReplaceable()) {
+            if (y <= pLevel.getMaxBuildHeight() && y >= pLevel.getMinBuildHeight() && pLevel.getBlockState(pos).canBeReplaced()) {
                 pLevel.setBlock(pos, BlockRegistry.ANGEL_BLOCK_BLOCK.get().defaultBlockState(), 3);
                 if (!pPlayer.isCreative()) {
                     if (pUsedHand == InteractionHand.MAIN_HAND) {
