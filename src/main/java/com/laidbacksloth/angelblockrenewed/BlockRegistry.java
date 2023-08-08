@@ -15,7 +15,7 @@ public class BlockRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, AngelBlockRenewed.MOD_ID);
 
     public static final RegistryObject<Block> ANGEL_BLOCK_BLOCK = BLOCKS.register("angel_block",
-            () -> new AngelBlockBlock(BlockBehaviour.Properties.of(Material.WOOD).instabreak().explosionResistance(0).noOcclusion()));
+            () -> new AngelBlockBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).instabreak().explosionResistance(0).noOcclusion()));
 
     public static final RegistryObject<Item> ANGEL_BLOCK_ITEM = ITEMS.register("angel_block",
             () -> new AngelBlockItem(ANGEL_BLOCK_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
