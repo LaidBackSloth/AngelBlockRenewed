@@ -24,19 +24,13 @@ public class AngelBlockItem extends BlockItem {
             double z = pPlayer.getZ() + pPlayer.getLookAngle().z * 4.5;
             BlockPos pos = new BlockPos(x, y, z);
 
-            //Make sure the player places the angel block below build limit
-            int maxBuildHeight = pLevel.getMaxBuildHeight();
-            int minBuildHeight = pLevel.getMinBuildHeight();
-            if(y <= maxBuildHeight && y >= minBuildHeight) {
-
-                if (pLevel.getBlockState(pos).getMaterial().isReplaceable()) {
-                    pLevel.setBlock(pos, BlockRegistry.ANGEL_BLOCK_BLOCK.get().defaultBlockState(), 3);
-                    if (!pPlayer.isCreative()) {
-                        if (pUsedHand == InteractionHand.MAIN_HAND) {
-                            pPlayer.getInventory().removeFromSelected(false);
-                        } else {
-                            pPlayer.getInventory().removeItem(Inventory.SLOT_OFFHAND, 1);
-                        }
+            if (y <= pLevel.getMaxBuildHeight() && y >= pLevel.getMinBuildHeight() && pLevel.getBlockState(pos).getMaterial().isReplaceable()) {
+                pLevel.setBlock(pos, BlockRegistry.ANGEL_BLOCK_BLOCK.get().defaultBlockState(), 3);
+                if (!pPlayer.isCreative()) {
+                    if (pUsedHand == InteractionHand.MAIN_HAND) {
+                        pPlayer.getInventory().removeFromSelected(false);
+                    } else {
+                        pPlayer.getInventory().removeItem(Inventory.SLOT_OFFHAND, 1);
                     }
                 }
             }
