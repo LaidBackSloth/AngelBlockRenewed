@@ -17,10 +17,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.laidbacksloth.${id}.${main}"
+      "com.laidbacksloth.angelblockrenewed.AngelBlockRenewed"
     ],
     "client": [
-      "com.laidbacksloth.${id}.ClientEvents"
+      "com.laidbacksloth.angelblockrenewed.ClientEvents"
     ]
   },
   "depends": {
