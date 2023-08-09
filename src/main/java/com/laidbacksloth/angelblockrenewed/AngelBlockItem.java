@@ -24,7 +24,7 @@ public class AngelBlockItem extends BlockItem {
             double z = pPlayer.getZ() + pPlayer.getLookAngle().z * 4.5;
             BlockPos pos = new BlockPos(x, y, z);
 
-            if (y <= pLevel.getMaxBuildHeight() && y >= pLevel.getMinBuildHeight() && pLevel.getBlockState(pos).getMaterial().isReplaceable()) {
+            if (pLevel.isInWorldBounds(pos) && pLevel.getBlockState(pos).getMaterial().isReplaceable()) {
                 pLevel.setBlock(pos, BlockRegistry.ANGEL_BLOCK_BLOCK.get().defaultBlockState(), 3);
                 if (!pPlayer.isCreative()) {
                     if (pUsedHand == InteractionHand.MAIN_HAND) {
