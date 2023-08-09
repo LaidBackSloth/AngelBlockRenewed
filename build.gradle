@@ -81,6 +81,9 @@ jar {
 }
 
 processResources {
+    //todo: this is important to ensure the files are updated correctly, probably do this later for all mods (and also all properties)
+    inputs.property("version", project.version)
+
     Map<String, ?> ex = new HashMap<>()
     ex.put("id", project.mod_id)
     ex.put("name", project.mod_name)
